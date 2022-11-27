@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>hw3-3</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1 class="center">Another Blackjack</h1>
+    <div class="center">
+      <div class="cards">
+        <img alt="card-1" height="200" src="images/cards/green_back.png" />
+        <img alt="card-2" height="200" src="images/cards/green_back.png" />
+        <img alt="card-3" height="200" src="images/cards/green_back.png" />
+        <p class="center result">RESULT</p>
+        <button>Hit</button>
+      </div>
+    </div>
+
+    <!-- You can remove the instructions below -->
+    <div class="instruction">
+      <p>
+        Use internal (or external) JavaScript to implement the features below:
+      </p>
+      <ul>
+        <li>
+          In this version of Blackjack, the player always deals three cards.
+          When the "Hit" button is clicked, the page should be updated replacing
+          the three cards with three random cards facing up. The card images for
+          each value/shape are inside <em>'images/cards'</em> folder.
+        </li>
+        <li>
+          When player's hand (the sum of three cards' values) exceeds 21, the
+          paragraph above "Hit" button (currently showing "RESULT") should show
+          "<strong>You are Busted!</strong>", otherwise it should show "<strong
+            >You are Not Busted!</strong
+          >".
+        </li>
+        <li>
+          The value of cards two through ten is their pip value (2 through 10).
+          Face cards (Jack, Queen, and King) are all worth <strong>10</strong>.
+          To simplify this game, <strong>Ace is always worth 1</strong>.
+        </li>
+        <li>(Optional) Try to make it more interesting.</li>
+      </ul>
+    </div>
+  </body>
+</html>

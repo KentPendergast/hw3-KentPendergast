@@ -10,88 +10,110 @@
     <h1 class="center">Another Blackjack</h1>
     <div class="center">
       <div class="cards">
-        <img alt="card-1" height="200" src="images/cards/green_back.png" />
-        <img alt="card-2" height="200" src="images/cards/green_back.png" />
-        <img alt="card-3" height="200" src="images/cards/green_back.png" />
-        <p class="center result">RESULT</p>
-        <button onclick="deckBuilder()">Hit</button>
+        <img
+          alt="card-1"
+          height="200"
+          src="images/cards/green_back.png"
+          id="cone"
+        />
+        <img
+          alt="card-2"
+          height="200"
+          src="images/cards/green_back.png"
+          id="ctwo"
+        />
+        <img
+          alt="card-3"
+          height="200"
+          src="images/cards/green_back.png"
+          id="cthree"
+        />
+        <p class="center result" id="output">RESULT</p>
+        <button onclick="randomCard(cards)">Hit</button>
       </div>
     </div>
 
-    <!-- You can remove the instructions below -->
-    <div class="instruction">
-      <p>
-        Use internal (or external) JavaScript to implement the features below:
-      </p>
-      <ul>
-        <li>
-          In this version of Blackjack, the player always deals three cards.
-          When the "Hit" button is clicked, the page should be updated replacing
-          the three cards with three random cards facing up. The card images for
-          each value/shape are inside <em>'images/cards'</em> folder.
-        </li>
-        <li>
-          When player's hand (the sum of three cards' values) exceeds 21, the
-          paragraph above "Hit" button (currently showing "RESULT") should show
-          "<strong>You are Busted!</strong>", otherwise it should show "<strong
-            >You are Not Busted!</strong
-          >".
-        </li>
-        <li>
-          The value of cards two through ten is their pip value (2 through 10).
-          Face cards (Jack, Queen, and King) are all worth <strong>10</strong>.
-          To simplify this game, <strong>Ace is always worth 1</strong>.
-        </li>
-        <li>(Optional) Try to make it more interesting.</li>
-      </ul>
-    </div>
-
-
-
     <script>
-
-      one(){
-        // Suit
-        // 1 Clubs 2 Diamonds 3 Hearts 4 Spades
-       suit = Math.floor(Math.random() * 5)
-
-      //  #
-
-
-      }
-
-
       function deckBuilder() {
-  const values = [ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", ];
-  const suits = ["H", "D", "S", "C"];
-  const cards = [];
-  for (let s = 0; s < suits.length; s++) {
-    for (let v = 0; v < values.length; v++) {
-      const value = values[v];
-      const suit = suits[s];
-      cards.push({ value, suit });
-    }
-  } 
-  return cards;
-}
+        console.log("Deck Built");
+        const values = [
+          "A",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9",
+          "10",
+          "J",
+          "Q",
+          "K",
+        ];
+        const suits = ["H", "D", "S", "C"];
+        const cards = [];
+        for (let s = 0; s < suits.length; s++) {
+          for (let v = 0; v < values.length; v++) {
+            const value = values[v];
+            const suit = suits[s];
+            cards.push({ value, suit });
+          }
+        }
+        return cards;
+      }
+      const cards = deckBuilder();
 
-const cards = deckBuilder();
-randomCard(cards);
+      function randomCard(cards) {
+        console.log("game played");
+        const n = [];
+        const s = [];
 
-function randomCard(cards) {  
-  const random = Math.floor(Math.random() * 51);  
-  const cardValue = cards[random].value;
-  const cardSuit = cards[random].suit;
-  let entity;
-  cardSuit === "Diamonds" ? (entity = "&diams;") : (entity = "&" + cardSuit.toLowerCase() + ";");
-  const card = document.createElement("div");
-  card.classList.add("card", cardSuit.toLowerCase());
-  card.innerHTML = 
-  '<span class="card-value-suit top">' + cardValue + entity + '</span>' + 
-  '<span class="card-suit">' + entity + '</span>' + 
-  '<span class="card-value-suit bot">' + cardValue + entity + '</span>';
-  document.body.appendChild(card);
-}
+        for (let i = 0; i < 3; i++) {
+          const random = Math.floor(Math.random() * 51);
+          cardValue = cards[random].value;
+          const cardSuit = cards[random].suit;
+          n.push(cardValue + cardSuit);
+
+          // Function to sum numbers
+          if (isNaN(cardValue)) {
+            if (cardValue == "A") {
+              cardValue = 1;
+            } else cardValue = 10;
+            s.push(cardValue);
+          } else s.push(cardValue);
+
+          if (i == 2) {
+            const cardo = document.getElementById("cone");
+            const cardt = document.getElementById("ctwo");
+            const cardh = document.getElementById("cthree");
+
+            cardo.src = "images/cards/" + n[0] + ".png";
+            cardt.src = "images/cards/" + n[1] + ".png";
+            cardh.src = "images/cards/" + n[2] + ".png";
+
+            sum = 0;
+            for (const value of s) {
+              sum += +value;
+            }
+
+            console.log(sum);
+            console.log(s);
+
+            result();
+          }
+        }
+        function result() {
+          const final = sum;
+          if (final < 21) {
+            console.log("User won the game:  " + final);
+            document.getElementById("output").innerHTML = "You are Not Busted";
+          } else {
+            console.log("User lost the game:  " + final);
+            document.getElementById("output").innerHTML = "You are Busted";
+          }
+        }
+      }
     </script>
   </body>
 </html>

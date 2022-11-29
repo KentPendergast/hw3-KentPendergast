@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <style>
-h2{
-  text-align: center;
-  color: red;
-  font-weight: bold;
-}
+    h2 {
+      text-align: center;
+      color: red;
+      font-weight: bold;
+    }
   </style>
   <body>
     <h1 class="center">Temperature Unit Converter</h1>
@@ -19,121 +19,123 @@ h2{
       <form action="" method="post">
         <label
           >Celsius:
-          <input name="cel" size="10" type="text" id="cel" oninput="ce()" onfocus="this.value=''" />
+          <input
+            name="cel"
+            size="10"
+            type="text"
+            id="cel"
+            oninput="ce()"
+            onfocus="this.value=''"
+          />
         </label>
         <label
           >Fahrenheit:
-          <input name="far" size="10" type="text" id="far" oninput="fe()" onfocus="this.value=''" />
+          <input
+            name="far"
+            size="10"
+            type="text"
+            id="far"
+            oninput="fe()"
+            onfocus="this.value=''"
+          />
         </label>
         <label
           >Kelvin:
-          <input name="kel" size="10" type="text" id="kel" oninput="ke()" onfocus="this.value=''"/>
+          <input
+            name="kel"
+            size="10"
+            type="text"
+            id="kel"
+            oninput="ke()"
+            onfocus="this.value=''"
+          />
         </label>
       </form>
       <h2 id="errorb"></h2>
     </div>
 
+    <script>
+      function ce() {
+        console.log("User inputted Celcius");
+        cval = document.getElementById("cel").value;
+        if (isNaN(cval)) {
+          console.log("celcius input invalid");
+          error();
+        } else {
+          clear();
+          console.log("C Calc");
+          const inpc = parseFloat(cval);
+          console.log("User entered: " + inpc);
+          // Kelvin
+          workingk = inpc + 273.15;
+          outk = workingk.toFixed(2);
+          console.log("Kelvin = " + outk);
+          // F
+          workingf = (inpc * 9) / 5 + 32;
+          outf = workingf.toFixed(2);
+          console.log("Fahrenheit = " + outf);
+          document.getElementById("far").value = outf;
+          document.getElementById("kel").value = outk;
+        }
+      }
 
+      function fe() {
+        console.log("User inputted Fahrenheit");
+        fval = document.getElementById("far").value;
+        if (isNaN(fval)) {
+          console.log("celcius input invalid");
+          error();
+        } else {
+          clear();
+          console.log("F Calc");
+          const inpf = parseFloat(fval);
+          console.log("User entered: " + inpf);
+          // Kelvin
+          workingk = ((inpf - 32) * 5) / 9 + 273.15;
+          outk = workingk.toFixed(2);
+          console.log("Kelvin = " + outk);
+          // Celcius
+          workingc = ((inpf - 32) * 5) / 9;
+          outc = workingc.toFixed(2);
+          console.log("Celcius = " + outc);
+          document.getElementById("cel").value = outc;
+          document.getElementById("kel").value = outk;
+        }
+      }
 
-<script>
+      function ke() {
+        console.log("User inputted Fahrenheit");
+        kval = document.getElementById("kel").value;
+        if (isNaN(kval)) {
+          console.log("celcius input invalid");
+          error();
+        } else {
+          clear();
+          console.log("F Calc");
+          const inpk = parseFloat(kval);
+          console.log("User entered: " + inpk);
+          // F
+          workingf = ((inpk - 273.15) * 9) / 5 + 32;
+          outf = workingf.toFixed(2);
+          console.log("F = " + outf);
+          // Celcius
+          workingc = inpk - 273.15;
+          outc = workingc.toFixed(2);
+          console.log("Celcius = " + outc);
+          document.getElementById("cel").value = outc;
+          document.getElementById("far").value = outf;
+        }
+      }
 
+      function error() {
+        console.log("ERROR");
+        document.getElementById("errorb").innerHTML =
+          "ERROR: Please enter a number";
+      }
 
-
-function ce(){
-console.log ("User inputted Celcius")
-  cval = document.getElementById ("cel").value
- if (isNaN(cval))
-  {
-  console.log("celcius input invalid")
-  error()
-  }
-  else{
-    clear()
-  console.log("C Calc")
-  const inpc = parseFloat(cval);
-  console.log("User entered: " + inpc);
-  // Kelvin
-  workingk = inpc + 273.15;
-  outk = workingk.toFixed(2)
-  console.log ("Kelvin = " + outk)
-  // F
-  workingf = (inpc * 9/5) + 32;
-  outf = workingf.toFixed(2)
-  console.log ("Fahrenheit = " + outf)
-  document.getElementById ("far").value = outf;
-  document.getElementById ("kel").value = outk;
-  }
-}
-
-function fe(){
-console.log ("User inputted Fahrenheit")
-  fval = document.getElementById ("far").value
- if (isNaN(fval))
-  {
-  console.log("celcius input invalid")
-  error()
-  }
-  else{
-    clear()
-  console.log("F Calc")
-  const inpf = parseFloat(fval);
-  console.log("User entered: " + inpf);
-  // Kelvin
-  workingk = (inpf - 32) * 5/9 + 273.15;
-  outk = workingk.toFixed(2)
-  console.log ("Kelvin = " + outk)
-  // Celcius
-  workingc = (inpf - 32) * 5/9;
-  outc = workingc.toFixed(2)
-  console.log ("Celcius = " + outc)
-  document.getElementById ("cel").value = outc;
-  document.getElementById ("kel").value = outk;
-  }
-}
-
-
-
-function ke(){
-console.log ("User inputted Fahrenheit")
-  kval = document.getElementById ("kel").value
- if (isNaN(kval))
-  {
-  console.log("celcius input invalid")
-  error()
-  }
-  else{
-    clear()
-  console.log("F Calc")
-  const inpk = parseFloat(kval);
-  console.log("User entered: " + inpk);
-  // F
-  workingf = (inpk - 273.15) * 9/5 + 32;
-  outf = workingf.toFixed(2)
-  console.log ("F = " + outf)
-  // Celcius
-  workingc = inpk - 273.15;
-  outc = workingc.toFixed(2)
-  console.log ("Celcius = " + outc)
-  document.getElementById ("cel").value = outc;
-  document.getElementById ("far").value = outf;
-  }
-}
-
-
-
-
-
-function error(){
-  console.log ("ERROR")
-  document.getElementById ("errorb").innerHTML = "ERROR: Please enter a number"
-}
-
-function clear(){
-  document.getElementById ("errorb").innerHTML = ""
-
-}
-</script>
-
-    
+      function clear() {
+        document.getElementById("errorb").innerHTML = "";
+      }
+    </script>
   </body>
 </html>

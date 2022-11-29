@@ -23,95 +23,76 @@
       <button onclick="Pay()" id="pas">Payton Pritchard</button>
     </div>
 
-
-
-
     <script>
-
-      function Al(){
-
+      function Al() {
         // Insert Goals Here
 
-console.log ("Al Horford Picked")
-clear()
+        console.log("Al Horford Picked");
+        clear();
 
-const img = document.querySelector ("#celtics-image");
-img.src ="images/al-horford.png";
-img.style.borderColor = ("yellow");
-document.getElementById ("al").style.backgroundColor = "silver";
-document.getElementById ("textop").innerHTML = "Al Horford";
-
-
+        const img = document.querySelector("#celtics-image");
+        img.src = "images/al-horford.png";
+        img.style.borderColor = "yellow";
+        document.getElementById("al").style.backgroundColor = "silver";
+        document.getElementById("textop").innerHTML = "Al Horford";
       }
 
-      // 
+      //
 
-function Jay(){
+      function Jay() {
+        console.log("Jaylen Brown Picked");
+        clear();
 
-console.log ("Jaylen Brown Picked")
-clear()
+        const img = document.querySelector("#celtics-image");
+        img.src = "images/jaylen-brown.png";
+        img.style.borderColor = "red";
+        document.getElementById("jay").style.backgroundColor = "silver";
+        document.getElementById("textop").innerHTML = "Jaylen Brown";
+      }
 
-const img = document.querySelector ("#celtics-image");
-img.src ="images/jaylen-brown.png";
-img.style.borderColor = ("red");
-document.getElementById ("jay").style.backgroundColor = "silver";
-document.getElementById ("textop").innerHTML = "Jaylen Brown";
+      function Jas() {
+        console.log("Jayson Tatum Picked");
+        clear();
 
-}
+        const img = document.querySelector("#celtics-image");
+        img.src = "images/jayson-tatum.png";
+        img.style.borderColor = "green";
+        document.getElementById("jas").style.backgroundColor = "silver";
 
-function Jas(){
+        document.getElementById("textop").innerHTML = "Jayson Tatum";
+      }
 
-console.log ("Jayson Tatum Picked")
-clear()
+      function Pay() {
+        console.log("Payton Pritchard Picked");
+        clear();
 
-const img = document.querySelector ("#celtics-image");
-img.src ="images/jayson-tatum.png";
-img.style.borderColor = ("green");
-document.getElementById ("jas").style.backgroundColor = "silver";
+        const img = document.querySelector("#celtics-image");
+        img.src = "images/payton-pritchard.png";
+        img.style.borderColor = "lime";
+        document.getElementById("pas").style.backgroundColor = "silver";
+        document.getElementById("textop").innerHTML = "Payton Pritchard";
+      }
 
+      function clear() {
+        console.log("Clear Function");
+        document.getElementById("al").style.backgroundColor = "white";
+        document.getElementById("jas").style.backgroundColor = "white";
+        document.getElementById("jay").style.backgroundColor = "white";
+        document.getElementById("pas").style.backgroundColor = "white";
+        const img = document.querySelector("#celtics-image");
+      }
 
-document.getElementById ("textop").innerHTML = "Jayson Tatum";
-}
-
-
-function Pay(){
-
-console.log ("Payton Pritchard Picked")
-clear()
-
-const img = document.querySelector ("#celtics-image");
-img.src ="images/payton-pritchard.png";
-img.style.borderColor = ("lime");
-document.getElementById ("pas").style.backgroundColor = "silver";
-document.getElementById ("textop").innerHTML = "Payton Pritchard";
-
-
-}
-
-
-function clear(){
-
-  console.log ("Clear Function")
-  document.getElementById ("al").style.backgroundColor = "white";
-  document.getElementById ("jas").style.backgroundColor = "white";
-  document.getElementById ("jay").style.backgroundColor = "white";
-  document.getElementById ("pas").style.backgroundColor = "white";
-  const img = document.querySelector ("#celtics-image");
-}
-
-
-function enlargeImage() {
+      function enlargeImage() {
         const myImg = document.getElementById("celtics-image");
         let w = myImg.width;
         w = w + 100;
         myImg.width = w;
       }
-      document.querySelector("#celtics-image").addEventListener("mouseover", function () {
-        enlargeImage();
-      });
-
-
-
+      document
+        .querySelector("#celtics-image")
+        .addEventListener("mouseover", function () {
+          enlargeImage();
+        });
 
       function smallImage() {
         const myImg = document.getElementById("celtics-image");
@@ -119,14 +100,11 @@ function enlargeImage() {
         w = w - 100;
         myImg.width = w;
       }
-      document.querySelector("#celtics-image").addEventListener("mouseout", function () {
-        smallImage();
-      });
-
-
-
+      document
+        .querySelector("#celtics-image")
+        .addEventListener("mouseout", function () {
+          smallImage();
+        });
     </script>
-
-  
   </body>
 </html>

@@ -12,49 +12,43 @@
     />
     <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body>
+  <body onload="runAnimations()">
     <h1 class="center">More Followers</h1>
-
-    <div class="center container">
-      <div class="counter-container">
+    <div class="center container" >
+      <div class="counter-container" >
         <i class="fab fa-instagram fa-4x"></i>
-        <div class="counter" data-target="8000">0</div>
-        <span>Instagram Followers</span>
+        <div class="counter" goal="8000">0</div>
+        <span >Instagram Followers</span>
       </div>
       <div class="counter-container">
         <i class="fab fa-youtube fa-4x"></i>
-        <div class="counter" data-target="5000">0</div>
+        <div class="counter" goal="5000">0</div>
         <span>YouTube Subscribers</span>
       </div>
       <div class="counter-container">
         <i class="fab fa-tiktok fa-4x"></i>
-        <div class="counter" data-target="10000">0</div>
+        <div class="counter" goal="10000">0</div>
         <span>Tiktok Followers</span>
+
       </div>
     </div>
-
-    <!-- You can remove the instructions below -->
-    <div class="instruction">
-      <p>
-        Use internal (or external) JavaScript to implement the following
-        features:
-      </p>
-      <ul>
-        <li>
-          When the webpage is loaded, the numbers of social media followers are
-          changing from 0 to the target numbers (8000 Instagram followers, 5000
-          YouTube subscribers and 10000 Tiktok followers).
-        </li>
-        <li>
-          Every 0.05 second, the two numbers should increase by a certain rate.
-          The entire changing animation should be done within 2 seconds.
-        </li>
-        <li>
-          After reaching to the target numbers (in &lt;= 2 seconds), changing
-          animation should stop.
-        </li>
-        <li>(Optional) Make the numbers reach to the targets at same time.</li>
-      </ul>
-    </div>
-  </body>
+    <script>
+        const counters = document.querySelectorAll('.counter');
+        for(let n of counters) {
+  const updateCount = () => {
+    const target = + n.getAttribute('goal');
+    const count = + n.innerText;
+    const speed = 2000; 
+    const inc = target / speed; 
+    if(count < target) {
+      n.innerText = Math.ceil(count + inc);
+      setTimeout(updateCount, 1);
+    } else {
+      n.innerText = target;
+    }
+  }
+  updateCount();
+}
+    </script>
+</body>
 </html>
